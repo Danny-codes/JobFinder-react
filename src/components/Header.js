@@ -1,14 +1,15 @@
-import {Link} from 'react-router-dom'
+import styles from './Header.module.css'
+
 const Header = () => {
     return(
-        <header>
+        <header className={styles.header}>
             <nav>
                 <div>
                 <img id="logo" src="img/logo.png" alt="JobFinder" />
                 <ul>
-                    <li><>Encontrar vaga</></li>
-                    <li>< >Enviar vaga</></li>
-                    <li>< >Contato</></li>
+                    <li><a>Encontrar vaga</a></li>
+                    <li><a>Enviar vaga</a></li>
+                    <li><a>Contato</a></li>
                 </ul>
                 </div>
             </nav>

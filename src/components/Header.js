@@ -1,5 +1,7 @@
 import styles from './Header.module.css'
 
+import HeaderBanner from './HeaderBanner'
+
 const Header = () => {
     return(
         <header className={styles.header}>
@@ -13,6 +15,7 @@ const Header = () => {
                 </ul>
                 </div>
             </nav>
+            <HeaderBanner />
         </header>
     )
 }

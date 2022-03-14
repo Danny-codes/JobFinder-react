@@ -1,12 +1,12 @@
-import { Route, Switch, Redirect, Routes } from "react-router-dom";
+import { Route, Redirect, Routes } from "react-router-dom";
 
-import Header from "./components/Header";
+import InitialPage from "./pages";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Header />} />
+        <Route path="/" element={<InitialPage />} />
       </Routes>
     </>
   );

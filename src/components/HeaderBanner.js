@@ -1,8 +1,8 @@
-
+import styles from './HeaderBanner.module.css'
 const HeaderBanner = () => {
     return (
-        <div>
-            <div>
+        <div className={styles.banner}>
+            <div className={styles.form}>
                 <h1>A maneira mais fácil de encontrar seu novo emprego</h1>
                 <p>Conecte-se de forma gratuita as melhores empresas e consiga o emprego dos seus sonhos</p>
                 <form>

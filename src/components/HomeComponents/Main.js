@@ -27,6 +27,22 @@ const Dummy_Data = [
     type: "Home Office",
     id: "3",
   },
+  {
+    path: "img/ibmlogo.png",
+    name: "IBM",
+    position: "Intern",
+    location: "Armonk, New York",
+    type: "Home Office",
+    id: "4",
+  },
+  {
+    path: "img/facebooklogo.png",
+    name: "Facebook",
+    position: "Developer",
+    location: "Menio Park, California",
+    type: "CLT",
+    id: "1",
+  },
 ];
 
 const Main = () => {
@@ -40,23 +56,28 @@ const Main = () => {
           {Dummy_Data.map((item) => (
             <li>
               <a>
-                <img src={item.path} alt={item.name} />
-                <div className={styles.name}>
-                  <h3>{item.name}</h3>
-                  <p>{item.position}</p>
-                </div>
-                <div className={styles.location}>
-                  <p>
-                    {marker} {item.location}
-                  </p>
-                </div>
-                <div className={styles.type}>
-                  <span>{item.type}</span>
+                <div className={styles.flex_box}>
+                    <img src={item.path} alt={item.name} />
+                    <div className={styles.name}>
+                      <h3>{item.name}</h3>
+                      <p>{item.position}</p>
+                    </div>
+                  <div className={styles.location}>
+                    <p>
+                      {marker} {item.location}
+                    </p>
+                  </div>
+                  <div className={styles.type}>
+                    <span>{item.type}</span>
+                  </div>
                 </div>
               </a>
             </li>
           ))}
         </ul>
+        <div className={styles.button}>
+          <button>Ver Mais Vagas</button>
+        </div>
       </div>
     </main>
   );

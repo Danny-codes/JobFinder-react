@@ -1,0 +1,62 @@
+.section{
+    color: #666;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.textDiv{
+    color: #666;
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+
+.textDiv h2{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.textDiv p{
+    font-size: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
+
+.article{
+    text-align: left;
+    margin-left: 1em;
+    margin-bottom: 4em;
+}
+
+
+.article img{
+    width: 100%;
+    border-radius: 7px;
+}
+
+.article h2{
+    border-radius: 7px;
+}
+
+.article span {
+    font-size: 15px;
+    font-style: italic;
+}
+
+.article button {
+    background-color: rgb(18, 183, 248);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    margin-bottom: 2em;
+}
+

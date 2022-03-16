@@ -1,0 +1,30 @@
+.section{
+    width: 70%;
+    margin: 80px auto;
+    color: #666;
+    text-align: center;
+}
+
+.text h2 {
+    font-size: 35px;
+}
+
+.text p {
+    font-size: 20px;
+}
+
+.data div{
+    margin-top: 60px;
+    display: inline-block;
+    width: 250px;
+    border-left: 1px solid rgb(194, 189, 189);
+    border-right: 1px solid rgb(216, 212, 212);
+    line-height: 10px;
+}
+
+.data div span{
+   font-size: 40px;
+}
+.data div p{
+    font-size: 20px;
+ }

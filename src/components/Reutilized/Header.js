@@ -1,7 +1,6 @@
 import styles from './Header.module.css'
-
-import HeaderBanner from './HeaderBanner'
-
+import { Link } from "react-router-dom";
+import FindJobs from '../../pages/FindJobs';
 const Header = () => {
     return(
         <header className={styles.header}>
@@ -9,13 +8,12 @@ const Header = () => {
                 <div>
                 <img id="logo" src="img/logo.png" alt="JobFinder" />
                 <ul>
-                    <li><a>Encontrar vaga</a></li>
-                    <li><a>Enviar vaga</a></li>
-                    <li><a>Contato</a></li>
+                    <li><Link to='find-job'>Encontrar vaga</Link></li>
+                    <li><Link to=''>Enviar vaga</Link></li>
+                    <li><Link to=''>Contato</Link></li>
                 </ul>
                 </div>
             </nav>
-            <HeaderBanner />
         </header>
     )
 }

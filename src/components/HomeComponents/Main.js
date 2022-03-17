@@ -1,6 +1,5 @@
 import styles from "./Main.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import JobsList from "../Reutilized/JobsList";
 
 const Dummy_Data = [
   {
@@ -46,35 +45,12 @@ const Dummy_Data = [
 ];
 
 const Main = () => {
-  const marker = <FontAwesomeIcon icon={faMapMarkerAlt} />;
 
   return (
     <main className={styles.main}>
       <div>
         <h1>Últimas vagas enviadas</h1>
-        <ul>
-          {Dummy_Data.map((item) => (
-            <li>
-              <a>
-                <div className={styles.flex_box}>
-                    <img src={item.path} alt={item.name} />
-                    <div className={styles.name}>
-                      <h3>{item.name}</h3>
-                      <p>{item.position}</p>
-                    </div>
-                  <div className={styles.location}>
-                    <p>
-                      {marker} {item.location}
-                    </p>
-                  </div>
-                  <div className={styles.type}>
-                    <span>{item.type}</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+         <JobsList Dummy_Data={Dummy_Data}/>
         <div className={styles.button}>
           <button>Ver Mais Vagas</button>
         </div>

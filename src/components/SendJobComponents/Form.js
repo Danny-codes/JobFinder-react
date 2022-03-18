@@ -17,9 +17,12 @@ const Form = () => {
                     <option>Escolha uma opção</option>
                     <option>PJ</option>
                     <option>CLT</option>
-                    <option>Free Lancer</option>
+                    <option>Insira o nome da empresa</option>
                 </select>
-                <button>Enviar</button>
+                <div> 
+
+                    <button>Enviar</button>
+                </div>
             </form>
         </main>
     )

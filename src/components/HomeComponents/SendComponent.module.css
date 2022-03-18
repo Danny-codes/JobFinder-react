@@ -39,3 +39,22 @@
     transition: 0.5s;
 
 }
+
+@media only screen and (max-width: 600px) {
+    .section div{
+        width: 80%;
+    }
+  
+    .section h3 {
+        font-size: 30px;
+    }
+
+    .section p {
+        font-size: 16px;
+    }
+
+    .section button {
+        padding: 10px 30px;
+     
+    }
+}

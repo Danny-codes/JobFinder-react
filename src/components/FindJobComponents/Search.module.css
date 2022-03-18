@@ -65,3 +65,22 @@
     border-left: 1px solid #666;
     border-right: 1px solid #666;
 }
+
+@media only screen and (max-width: 700px) {
+    .main section{
+        width: 80%;
+    }
+
+    .main form  {
+       display: block;
+       height: 20em;
+       padding-top: 10px;
+
+    }
+    .main form button, .main form input, .main form select {
+        width: 70%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+  
+}

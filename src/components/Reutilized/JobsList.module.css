@@ -26,6 +26,8 @@
     border-bottom: 1px solid rgb(192, 190, 190);;
 }
 
+
+
 .name{
     width: 10em;
     text-align: left;
@@ -54,9 +56,36 @@
     background-color: red;
     color: white;
     width: 15em;
-    height: 1.5em;
+    height: 1.8em;
     text-align: center;
     border-radius: 5px;
     font-size: 13px;
     font-weight: bold;
+}
+
+@media only screen and (max-width: 700px) {
+    .ul img{
+        width: 6em;
+    }
+
+    .name{
+        width: 8em;
+    }
+
+    .name h3 {
+        font-size: 15px;
+    }
+
+    .name p {
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    .location {
+        width: 8em;
+    }
+
+    .type{
+        width: 8em;
+    }
 }

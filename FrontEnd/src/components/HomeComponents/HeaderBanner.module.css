@@ -1,0 +1,64 @@
+.banner {
+    background: url('../../../public/img/banner6.jpg') no-repeat;
+    background-size: cover;
+    background-position: 0 55%;
+    margin-top: 100px;
+}
+
+.form {
+    text-align: center;
+    padding-top: 10em;
+    padding-bottom: 10em;
+    text-align: center;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.form h1{
+    color: #666;
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.form p {
+    color: #666;
+}
+
+.form input {
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.form input[type='submit'] {
+    background-color: blue;
+    color: white;
+}
+
+.form select{
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin: 10px;
+    font-size: 20px;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .form input, .form select {
+        margin-bottom: 20px;
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        text-indent: 20px;
+    }
+
+
+    .form h1{
+        font-size: 30px
+    }
+  
+}

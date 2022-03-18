@@ -1,0 +1,98 @@
+.footer h2 {
+    font-weight: 400;
+    font-size: 1.5em ;
+}
+
+.footer {
+   font-weight: 400;
+   background-color: #666;
+   color: #D1D1D1;
+   padding: 40px;
+   padding-top: 60px;
+  
+}
+
+.flex_box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand{
+    display: inline-block;
+    width: 30%;
+    font-size: 20px;
+}
+
+.brand img{
+    width: 150px;
+}
+
+
+.nav {
+    width: 30%;
+}
+
+
+.nav ul {
+    list-style: none;
+    font-size: 20px;
+}
+
+.nav ul a:hover{
+    color:white;
+    cursor: pointer;
+}
+
+.nav ul p {
+    font-size: 15px;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.contact {
+    width: 30%;
+}
+
+.contact a {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact a span{
+    font-size: 35px;
+}
+
+.contact a:hover{
+    color:white;
+    cursor: pointer;
+}
+
+.copy{
+    border-top: 1px solid rgb(190, 189, 189);
+    position: relative;
+    width: 100%;
+    display: relative;
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+    .flex_box {
+        display: block;
+    }
+
+    .brand{
+        width: 80%
+
+    }
+
+    .nav{
+        width: 80%
+    }
+
+    .contact{
+        width: 80%
+    }
+}
+

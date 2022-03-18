@@ -1,0 +1,59 @@
+.main{
+    padding-top: 170px;
+    text-align: center;
+    color: #666;
+}
+
+.main h1{
+   font-size: 40px;
+   margin-bottom: 60px;
+}
+
+.main form {
+     width: 40%;  
+     margin: 0 auto;
+     text-align: left;
+     font-weight: 600;
+     font-size: 18px;
+
+}
+
+.main label{
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.main form input, .main form textarea, .main form select{
+    width: 100%;
+    border: 1px solid #ccc ;
+    border-radius: 5px;
+    font-size: 20px;
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.main Button{
+    width: 10em;
+    height: 3em;
+    background-color: #3381f3;
+    color: white;
+    border: none;
+    border-radius:  5px;
+    margin-bottom: 200px;
+    font-size: 18px;
+}
+
+.main form div{
+    display: flex;
+    justify-content:end;
+}
+
+@media only screen and (max-width: 600px) {
+    .main form {
+        width: 80%;  
+   }
+  
+}

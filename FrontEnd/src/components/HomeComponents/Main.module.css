@@ -1,0 +1,25 @@
+.main{
+    text-align: center;
+    padding-top: 5em;
+}
+
+.button{
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.button button{
+    border: 2px solid rgb(65, 168, 236);
+    border-radius: 5px;
+    color: rgb(65, 168, 236);
+    padding: 15px 25px;
+    background-color: white;
+    transition: 0.5s;
+    font-weight: bold;
+}
+
+.button button:hover{
+    color: white;
+    background-color: rgb(65, 168, 236);
+    transition: 0.5s;
+}

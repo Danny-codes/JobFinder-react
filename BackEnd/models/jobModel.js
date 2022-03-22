@@ -27,6 +27,10 @@ const Job = connection.define('job', {
     company:{
         type: Sequelize.STRING,
         allowNull: false,
+    }, 
+    location:{
+        type: Sequelize.TEXT,
+        allowNull: false,
     },
     type: {
         type: Sequelize.STRING,

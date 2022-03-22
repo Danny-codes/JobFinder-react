@@ -1,56 +1,32 @@
 import styles from "./Main.module.css";
 import JobsList from "../Reutilized/JobsList";
-
-const Dummy_Data = [
-  {
-    path: "img/facebooklogo.png",
-    name: "Facebook",
-    position: "Developer",
-    location: "Menio Park, California",
-    type: "CLT",
-    id: "1",
-  },
-  {
-    path: "img/googlelogo.png",
-    name: "Google",
-    position: "FrontEndDeveloper",
-    location: "Mountain View, California",
-    type: "PJ",
-    id: "2",
-  },
-  {
-    path: "img/ibmlogo.png",
-    name: "IBM",
-    position: "Intern",
-    location: "Armonk, New York",
-    type: "Home Office",
-    id: "3",
-  },
-  {
-    path: "img/ibmlogo.png",
-    name: "IBM",
-    position: "Intern",
-    location: "Armonk, New York",
-    type: "Home Office",
-    id: "4",
-  },
-  {
-    path: "img/facebooklogo.png",
-    name: "Facebook",
-    position: "Developer",
-    location: "Menio Park, California",
-    type: "CLT",
-    id: "1",
-  },
-];
+import axios from 'axios'
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Main = () => {
+  const [jobs, setJobs] = useState([])
+
+  const api= axios.create({
+    baseURL: "http://localhost:3000/api"
+  })
+
+  useEffect(( ) => {
+    api
+      .get('/jobs')
+      .then((response) => setJobs(response.data))
+      .catch((err) => {
+        console.log("ops! an error happened")
+      })
+
+  }, []);
+  
 
   return (
     <main className={styles.main}>
       <div>
         <h1>Últimas vagas enviadas</h1>
-         <JobsList Dummy_Data={Dummy_Data}/>
+         <JobsList Dummy_Data={jobs}/>
         <div className={styles.button}>
           <button>Ver Mais Vagas</button>
         </div>

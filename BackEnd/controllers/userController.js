@@ -1,5 +1,5 @@
-import User from "../models/userModel";
-
+import User from "../models/userModel.js";
+import bcryptjs from 'bcryptjs'
 let userServices = {}
 
 userServices.getAUser = async (req, res) => {
@@ -16,18 +16,24 @@ userServices.getAUser = async (req, res) => {
 }
 
 userServices.createUser = async (req, res) => {
+    console.log(req.body)
     try{
         const {name, email, company, password} = req.body
 
-        const newUser =await  User.create({
+        const salt =  bcryptjs.genSaltSync(10)
+        const hash = bcryptjs.hashSync(password, salt)
+        
+        
+        const newUser = await User.create({
             name,
             email,
             company,
-            password
+            password: hash
         })
     
         return res.json(newUser)
     }catch(error){
+        console.log(hash)
         return res.json(error)
     }
    
@@ -65,5 +71,22 @@ userServices.deleteUser = async (req, res) => {
     }catch(error){
        return res.json(error)
     }
-
 }
+
+userServices.changePassword = async(req,res) => {
+    try{
+        const id = req.params.id
+        const {newPassword} = req.body
+
+        const user = await User.findByPk(id)
+
+        user.password = newPassword
+
+        user.save()
+        return res.json(user)
+    }catch(error){
+        return res.json(error)
+    }
+}
+
+export default userServices

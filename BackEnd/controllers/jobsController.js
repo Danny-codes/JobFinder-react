@@ -26,12 +26,13 @@ jobsServices.getAJob = async (req,res) => {
 
 jobsServices.postJobs = async (req,res) => {
     try{
-        const {title, description, company, type} = req.body
+        const {title, description, company, type, location} = req.body
         const newJob = await Job.create({
             title,
             description,
             company,
-            type
+            type,
+            location
         })
 
         return res.json(newJob)

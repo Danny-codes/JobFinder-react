@@ -4,10 +4,9 @@ import { Provider } from 'react';
 
 import './index.css';
 import App from './App';
-import store from './store/index'
 
 ReactDOM.render(
-    <BrowserRouter><Provider store={store}><App /></Provider></BrowserRouter>,document.getElementById('root')
+    <BrowserRouter><App /></BrowserRouter>,document.getElementById('root')
 );
 
 

@@ -24,6 +24,26 @@ jobsServices.getAJob = async (req,res) => {
     }
 }
 
+jobsServices.getRequestedJobs = async (req,res) => {
+
+    const role = req.body.role
+    const location = req.body.state
+    const category = req.body.category
+    const contract = req.body.contract
+
+    try{
+
+        const selectedJob = await Job.findAll({
+            where: 
+                {role: role, state: state, category: category, contract: contract, location: location}
+            })
+
+        return res.json(selectedJob)
+    }catch(error) {
+        return res.json(error)
+    }
+}
+
 jobsServices.postJobs = async (req,res) => {
     try{
         const {title, description, company, type, location} = req.body

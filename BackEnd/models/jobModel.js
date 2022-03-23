@@ -8,7 +8,7 @@ const Job = connection.define('job', {
         allowNull: false,
         primaryKey: true
     },
-    title:{
+    role:{
         type: Sequelize.STRING,
         min:{
             args:[5],
@@ -28,11 +28,11 @@ const Job = connection.define('job', {
         type: Sequelize.STRING,
         allowNull: false,
     }, 
-    location:{
+    state:{
         type: Sequelize.TEXT,
         allowNull: false,
     },
-    type: {
+    contract: {
         type: Sequelize.STRING,
         allowNull: true
     },

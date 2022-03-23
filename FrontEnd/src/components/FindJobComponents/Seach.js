@@ -1,9 +1,27 @@
 import JobsList from "../Reutilized/JobsList";
 import styles from "./Search.module.css";
 import SeeMoreButton from "./SeeMoreButton";
-import useDispa
-const Search = (props) => {
-  const dummy_data = props.dummy_data;
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+
+const Search = () => {
+  const [jobs, setJobs] = useState([])
+
+  const api= axios.create({
+    baseURL: "http://localhost:3000/api"
+  })
+
+  useEffect(( ) => {
+    api
+      .get('/jobs')
+      .then((response) => setJobs(response.data))
+      .catch((err) => {
+        console.log("ops! an error happened")
+      })
+
+  }, [])
+
   return (
     <>
       <main className={styles.main}>
@@ -43,7 +61,7 @@ const Search = (props) => {
 
 
         </section>
-      <JobsList Dummy_Data={dummy_data} />
+      <JobsList Dummy_Data={jobs} />
       <SeeMoreButton />
       </main>
     </>

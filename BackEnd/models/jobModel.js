@@ -36,6 +36,10 @@ const Job = connection.define('job', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    category : {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     deleted_at:{
         type: Sequelize.INTEGER,
         allowNull: true

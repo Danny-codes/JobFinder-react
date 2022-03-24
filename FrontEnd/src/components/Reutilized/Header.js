@@ -25,7 +25,7 @@ const Header = () => {
     return(
         <header className={styles.header}>
             <div className={styles.header_content}>
-                <img id="logo" src="img/logo.png" alt="JobFinder" />
+                <Link to='/'><img id="logo" src="img/logo.png" alt="JobFinder" /></Link>
                 <div className={styles.navigation}>
                 <button onClick={barsClickHandler}>{!showMenu ? bars : close}</button>
                 <nav className={showMenu ? styles.navshowing : styles.notshow}>

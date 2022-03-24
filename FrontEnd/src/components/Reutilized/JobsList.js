@@ -9,20 +9,20 @@ const JobsList = (props) => {
     return (
         <ul className={styles.ul}>
           {props.Dummy_Data.map((item) => (
-            <li key={props.Dummy_Data.id}>
+            <li key={item.id}>
               <a>
                 <div className={styles.flex_box}>
                     <div className={styles.name}>
                       <h3>{item.company}</h3>
-                      <p>{item.title}</p>
+                      <p>{item.role}</p>
                     </div>
                   <div className={styles.location}>
                     <p>
-                      {marker} {item.location}
+                      {marker} {item.state}
                     </p>
                   </div>
                   <div className={styles.type}>
-                    <span>{item.type}</span>
+                    <span>{item.contract}</span>
                   </div>
                 </div>
               </a>

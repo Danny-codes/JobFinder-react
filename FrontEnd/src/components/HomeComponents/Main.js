@@ -1,32 +1,16 @@
 import styles from "./Main.module.css";
 import JobsList from "../Reutilized/JobsList";
-import axios from 'axios'
-import { useEffect } from "react";
-import { useState } from "react";
+import { useContext } from "react";
+import JobsContext from "../../store/job-slice";
 
 const Main = () => {
-  const [jobs, setJobs] = useState([])
-
-  const api= axios.create({
-    baseURL: "http://localhost:3000/api"
-  })
-
-  useEffect(( ) => {
-    api
-      .get('/jobs')
-      .then((response) => setJobs(response.data))
-      .catch((err) => {
-        console.log("ops! an error happened")
-      })
-
-  }, []);
+  const ctx = useContext(JobsContext)
   
-
   return (
     <main className={styles.main}>
       <div>
         <h1>Últimas vagas enviadas</h1>
-         <JobsList Dummy_Data={jobs}/>
+         <JobsList Dummy_Data={ctx.latestJobsList}/>
         <div className={styles.button}>
           <button>Ver Mais Vagas</button>
         </div>

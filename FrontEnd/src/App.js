@@ -9,7 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<InitialPage />} />
-        <Route path='/find-job' element={<FindJobs />} />
+        <Route path='/find-job/' element={<FindJobs />} />
+        <Route path='/find-job/:prev' element={<FindJobs />} />
         <Route path='/send-job' element={<SendJob/>} />
         <Route path="*" element={<InitialPage />} />
       </Routes>

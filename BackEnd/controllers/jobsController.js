@@ -4,7 +4,7 @@ let jobsServices = {};
 
 jobsServices.getJobs = async (req, res) => {
   try {
-    const allJobs = await Job.findAll();
+    const allJobs = await Job.findAll({where: {deleted_at: null}, limit: 5, order: [['id', 'DESC']]});
 
     return res.json(allJobs);
   } catch (error) {
@@ -72,7 +72,7 @@ jobsServices.updateJob = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const { title, description, company, type, category } = req.body;
+    const { role, description, company, contract, category } = req.body;
     const selectedJob = await Job.findByPk(id);
 
     if (selectedJob) {
@@ -106,10 +106,14 @@ jobsServices.deleteJob = async (req, res) => {
   try {
     const selectedJob = await Job.findByPk(id);
 
-    selectedJob.deleted_at = new Date();
+    if(selectedJob){
+      selectedJob.deleted_at = new Date();
 
-    selectedJob.save();
-
+      await selectedJob.save();
+    }else{
+      return res.json('job does not exist')
+    }
+    
     return res.json(selectedJob);
   } catch (error) {
     return res.json(error);

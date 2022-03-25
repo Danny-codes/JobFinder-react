@@ -1,46 +1,48 @@
 import JobsList from "../Reutilized/JobsList";
 import styles from "./Search.module.css";
 import SeeMoreButton from "./SeeMoreButton";
-import { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import { useState, useRef, useContext } from "react";
+import JobsContext from "../../store/job-slice";
+import { useParams } from "react-router-dom";
 
 const Search = () => {
-  const [jobs, setJobs] = useState([]);
-  const roleRef = useRef()
-  const stateRef = useRef()
-  const categoryRef = useRef()
-  const contractRef = useRef()
+  let data;
+  const {prev} = useParams()
+  const [searched, setSearched] = useState(false);
+
+  const ctx = useContext(JobsContext);
+
+  const roleRef = useRef();
+  const stateRef = useRef();
+  const categoryRef = useRef();
+  const cltRef = useRef();
+  const pjRef = useRef();
+  const freeRef = useRef();
 
 
-  const api = axios.create({
-    baseURL: "http://localhost:3000/api",
-  });
 
-  useEffect(() => {
-    api
-      .get("/jobs")
-      .then((response) => setJobs(response.data))
-      .catch((err) => {
-        console.log("ops! an error happened");
-      });
-  }, []);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    !searched && setSearched(true);
 
-  const submitHandler = (e) => { 
-    e.preventDefault()
-
-      api
-        .post('/jobs/filtered', {
-          role: roleRef.current.value,
-          state: stateRef.current.value,
-          category: categoryRef.current.value,
-          contract: categoryRef.current.value
-        })
-        .then(response => {
-          setJobs(response.data) 
-          console.log(response)} )
-        .catch(error => console.log(error))
+    const filterData = {
+      role: roleRef.current.value,
+      state: stateRef.current.value,
+      category: categoryRef.current.value,
+      contractRef: cltRef.current.value
     }
-  
+    
+    ctx.filterJobs(filterData);
+
+    console.log(filterData)
+  };
+
+    if(!searched && !prev){
+      data = ctx.latestJobsList
+    }else{
+       data = ctx.filteredJobs
+    }
+
   return (
     <>
       <main className={styles.main}>
@@ -51,7 +53,12 @@ const Search = () => {
               <label htmlFor="position" hidden>
                 Cargo
               </label>
-              <input  ref={roleRef} id="position" type="text" placeholder="Digite o cargo" />
+              <input
+                ref={roleRef}
+                id="position"
+                type="text"
+                placeholder="Digite o cargo"
+              />
               <select ref={stateRef} name="region">
                 <option value="">Todos os estados</option>
                 <option>São Paulo</option>
@@ -74,25 +81,25 @@ const Search = () => {
               </select>
               <button>Pesquisar</button>
             </form>
-            <fieldset ref={contractRef}>
+            <fieldset >
               <div>
                 <label htmlFor="clt">CLT</label>
-                <input type="checkbox" id="clt" value="CLT" />
+                <input ref={cltRef}type="checkbox" id="clt" value="CLT" />
               </div>
 
               <div className={styles.middle}>
                 <label htmlFor="pj">PJ</label>
-                <input type="checkbox" id="pj" value="PJ" />
+                <input ref={pjRef}type="checkbox" id="pj" value="PJ" />
               </div>
 
               <div>
                 <label htmlFor="free">Free Lancer</label>
-                <input type="checkbox" id="free" value="Free Lancer" />
+                <input ref={freeRef}type="checkbox" id="free" value="Free Lancer" />
               </div>
             </fieldset>
           </div>
         </section>
-        <JobsList Dummy_Data={jobs} />
+        <JobsList data={data} />
         <SeeMoreButton />
       </main>
     </>

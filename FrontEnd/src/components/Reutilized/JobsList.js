@@ -5,10 +5,10 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 const JobsList = (props) => {
     const marker = <FontAwesomeIcon icon={faMapMarkerAlt} />;
 
-    console.log(props.Dummy_Data)
+    console.log(props.data)
     return (
         <ul className={styles.ul}>
-          {props.Dummy_Data.map((item) => (
+          {props.data && props.data.map((item) => (
             <li key={item.id}>
               <a>
                 <div className={styles.flex_box}>

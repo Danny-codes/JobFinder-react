@@ -19,9 +19,9 @@ const Form = () => {
             
                 api
                   .post('/jobs', {
-                      role: roleRef.current.value,
-                      description: descriptionRef.current.value,
-                      company: companyRef.current.value,
+                      role: roleRef.current.value.toLowerCase(),
+                      description: descriptionRef.current.value.toLowerCase(),
+                      company: companyRef.current.value.toLowerCase(),
                       contract: contractRef.current.value,
                       state: statetRef.current.value,
                       category: categoryRef.current.value

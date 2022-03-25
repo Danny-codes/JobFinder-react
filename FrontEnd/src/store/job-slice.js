@@ -8,8 +8,8 @@ const JobsContext = createContext({
 
 
 export const JobsContextProvider = (props) => {
-  const [latestJobsList, setLatestJobsList] = useState([{}]);
-  const [filteredJobs, setFilteredJobs] = useState([{}])
+  const [latestJobsList, setLatestJobsList] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([])
 
   const api = axios.create({
     baseURL: "http://localhost:3000/api",
@@ -20,25 +20,24 @@ export const JobsContextProvider = (props) => {
       .get("/jobs")
       .then((response) => {
         setLatestJobsList(response.data)
-        console.log(response.data)
       })
       .catch((err) => {
-        console.log("ops! an error happened");
+        console.log(err);
       });
   }, []);
 
 
-  const filterJobs = (props) => {
-    api
+  const filterJobs = async (filterData) => {
+    await api
     .post('/jobs/filtered', {
-      role: props.role,
-      state: props.state,
-      category: props.category,
-      contract: props.contract
+      role: filterData.role,
+      state: filterData.state,
+      category: filterData.category,
+      contract: filterData.contract
     })
     .then(response => {
       setFilteredJobs(response.data) 
-      console.log(response)} )
+     } )
     .catch(error => console.log(error))
   }
 

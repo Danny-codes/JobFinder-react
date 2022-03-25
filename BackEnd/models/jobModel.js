@@ -41,7 +41,7 @@ const Job = connection.define('job', {
         allowNull: false
     },
     deleted_at:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATE,
         allowNull: true
     }
 })

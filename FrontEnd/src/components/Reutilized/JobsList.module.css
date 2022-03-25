@@ -39,11 +39,15 @@
     color: rgb(172, 170, 170);
     font-size: 20px;
     line-height: 5px;
+    text-transform: uppercase;
 }
 
 .name p {
     font-weight: bold;
     font-size: 15px;
+}
+.name p:first-letter {
+    text-transform: uppercase;
 }
 
 .location {

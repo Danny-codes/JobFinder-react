@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import AuthContext from '../../store/authContext';
 
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 const Header = () => {
+    const ctx = useContext(AuthContext)
     const bars = <FontAwesomeIcon icon={faBars} />;
     const close = <FontAwesomeIcon icon={faTimes} />;
 
@@ -30,7 +32,8 @@ const Header = () => {
                 <button onClick={barsClickHandler}>{!showMenu ? bars : close}</button>
                 <nav className={showMenu ? styles.navshowing : styles.notshow}>
                     <li><Link to='/find-job'>Encontrar vaga</Link></li>
-                    <li><Link to='/send-job'>Enviar vaga</Link></li>
+                    {ctx.loggedIn && <li><Link to='/send-job'>Enviar vaga</Link></li>}
+                    {!ctx.loggedIn && <li><Link to='/signIn'>Página do Recrutador</Link></li>}
                 </nav>
                 </div>
             </div>

@@ -23,10 +23,7 @@ const User = connection.define('user', {
             msg: 'Please enter a valid email'
         },
         allowNull: false,
-    },
-    company:{
-        type: Sequelize.STRING,
-        allowNull: false,
+        unique: true,
     },
     password:{
         type: Sequelize.TEXT,

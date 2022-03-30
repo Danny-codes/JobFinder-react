@@ -1,5 +1,7 @@
 import User from "../models/userModel.js";
 import bcryptjs from "bcryptjs";
+import  jwt from 'jsonwebtoken'
+
 let userServices = {};
 
 userServices.getAUser = async (req, res) => {
@@ -17,7 +19,7 @@ userServices.getAUser = async (req, res) => {
 userServices.createUser = async (req, res) => {
   console.log(req.body);
   try {
-    const { name, email, company, password } = req.body;
+    const { name, email, password } = req.body;
 
     const salt = bcryptjs.genSaltSync(10);
     const hash = bcryptjs.hashSync(password, salt);
@@ -25,13 +27,14 @@ userServices.createUser = async (req, res) => {
     const newUser = await User.create({
       name,
       email,
-      company,
       password: hash,
     });
 
-    return res.json(newUser);
+    const token = jwt.sign({newUser}, 'secret', {expiresIn: '30d'})
+    console.log(token)
+
+    return res.json( token);
   } catch (error) {
-    console.log(hash);
     return res.json(error);
   }
 };

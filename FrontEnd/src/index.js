@@ -4,11 +4,15 @@ import { JobsContextProvider } from "./store/job-slice";
 
 import "./index.css";
 import App from "./App";
+import { AuthContextProvider } from "./store/authContext";
 ReactDOM.render(
   <BrowserRouter>
-    <JobsContextProvider>
-      <App />
-    </JobsContextProvider>
+    <AuthContextProvider>
+      <JobsContextProvider>
+        <App />
+      </JobsContextProvider>
+    </AuthContextProvider>
   </BrowserRouter>,
+
   document.getElementById("root")
 );

@@ -29,10 +29,6 @@ const Footer = () => {
                 <a>Como conseguir o primeiro emprego em tempos de crise?</a>
                 <p>05 de fevereiro de 2019</p>
               </li>
-              <li>
-                <a>Como conseguir o primeiro emprego em tempos de crise?</a>
-                <p>05 de fevereiro de 2019</p>
-              </li>
             </ul>
           </nav>
         </div>

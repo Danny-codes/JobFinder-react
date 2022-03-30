@@ -1,11 +1,16 @@
 import styles from "./Main.module.css";
 import JobsList from "../Reutilized/JobsList";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import JobsContext from "../../store/job-slice";
 import { Link } from "react-router-dom";
 
 const Main = () => {
   const ctx = useContext(JobsContext)
+
+  useEffect(() =>{
+    ctx.fetchedData()
+  }, [])
+
   
   return (
     <main className={styles.main}>

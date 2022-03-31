@@ -1,11 +1,9 @@
-import Input from "../Reutilized/Inputs";
 import { useRef, useContext } from "react";
 import AuthContext from "../../store/authContext";
 import styles from './LoginForm.module.css'
 import { Link } from "react-router-dom";
 const LoginForm = () => {
     const ctx = useContext(AuthContext)
-
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -17,16 +15,15 @@ const LoginForm = () => {
             email: emailRef.current.value,
             password: passwordRef.current.value,
         })
-        .then((response) => {console.log(response.data)})
+        .then((response) => {ctx.settingToken(response.data.token)})
         .catch(err => console.log(err))
 
-        console.log(emailRef)
     }
 
   return (
     <main className={styles.main}>
       <h1>Login</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <input
           ref={emailRef}
           type="email"
@@ -39,7 +36,7 @@ const LoginForm = () => {
           id="password"
           placeholder="Insira a sua senha"
         />
-        <button onSubmit={submitHandler}>Entrar</button>
+        <button>Entrar</button>
       </form>
       <div>
         <Link to={'/signUp'}>Cadastrar</Link>

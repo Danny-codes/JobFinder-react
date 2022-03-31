@@ -3,10 +3,11 @@ import { useRef, useContext, useEffect, useState } from "react";
 import JobsContext from "../../store/job-slice";
 import SuccessModel from "./SuccessModel";
 import { Editor } from "@tinymce/tinymce-react";
-import Input from "../Reutilized/Inputs";
+import AuthContext from "../../store/authContext";
 
 const Form = () => {
-  const ctx = useContext(JobsContext);
+  const Jobsctx = useContext(JobsContext);
+  const AuthCtx = useContext(AuthContext)
   const [id, setId] = useState()
   const roleRef = useRef();
   const descriptionRef = useRef(null)
@@ -18,7 +19,7 @@ const Form = () => {
   const sendJobHandler = (e) => {
     e.preventDefault();
 
-      ctx.api
+    AuthCtx.api
       .post("/jobs", {
         role: roleRef.current.value.toLowerCase(),
         description: descriptionRef.current.getContent(),
@@ -32,13 +33,16 @@ const Form = () => {
         console.log("ops! an error happened");
       });
 
-    ctx.showingModal();
+      Jobsctx.showingModal();
 
-    e.target.reset();
+   // e.target.reset();
 
-    console.log(id)
+    console.log(AuthCtx.token)
    
   };
+  const token = AuthCtx.getToken()
+
+  console.log('piu' + token)
 
   return (
     <main>
@@ -114,7 +118,7 @@ const Form = () => {
           </div>
         </form>
       </div>
-      {ctx.showModal && <SuccessModel id={id}/>}
+      {Jobsctx.showModal && <SuccessModel id={id}/>}
     </main>
   );
 };

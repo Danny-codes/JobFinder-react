@@ -51,6 +51,7 @@ jobsServices.getRequestedJobs = async (req, res) => {
 };
 
 jobsServices.postJobs = async (req, res) => {
+  console.log('cheguei')
   try {
     const { role, description, company, contract, state, category } = req.body;
     const newJob = await Job.create({

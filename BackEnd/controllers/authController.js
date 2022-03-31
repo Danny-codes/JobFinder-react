@@ -6,14 +6,17 @@ const authController = async (req, res) => {
   const { email, password } = req.body;
   const foundUser = await User.findOne({ where: { email: email } });
   if (foundUser) {
-    const authenticated =  bcryptjs.compareSync(password, foundUser.password);
+    const authenticated = bcryptjs.compareSync(password, foundUser.password);
 
     if (authenticated) {
-      const token = jwt.sign({ foundUser }, "secret", { expiresIn: "30d" });
+      const token = jwt.sign(
+        { userName: foundUser.name, userEmail: foundUser.email },
+        "secret",
+        { expiresIn: "30d" }
+      );
 
-      return res.json({ token: token, user: foundUser });
+      return res.json({ token: token });
     } else {
-        console.log(foundUser.password)
       res.json("Please provide valid email and password");
     }
   } else {

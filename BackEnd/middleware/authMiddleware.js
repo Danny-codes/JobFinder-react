@@ -8,6 +8,8 @@ const authMiddleware = async (req,res, next) =>{
 
     const token = tokenItems[1]
 
+    console.log(token)
+
     jwt.verify(token, 'secret', (err) => {
         console.log(tokenItems)
         if(err){

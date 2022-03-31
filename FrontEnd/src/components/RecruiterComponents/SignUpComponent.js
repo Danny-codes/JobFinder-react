@@ -1,5 +1,4 @@
-import Input from "../Reutilized/Inputs";
-import { useRef,useContext, forwardRef } from "react";
+import { useRef,useContext } from "react";
 import styles from './LoginForm.module.css'
 import AuthContext from "../../store/authContext";
 
@@ -19,7 +18,7 @@ const SignUp = () => {
             name: nameRef.current.value,
             password: passwordRef.current.value,
         })
-        .then((response) => {console.log(response.data)})
+        .then((response) => {ctx.settingToken(response.data.token)})
         .catch(err => console.log(err))
 
         console.log(emailRef)

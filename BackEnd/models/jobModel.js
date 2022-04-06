@@ -8,6 +8,11 @@ const Job = connection.define('job', {
         allowNull: false,
         primaryKey: true
     },
+    recruiter: {
+        type: Sequelize.INTEGER,
+        allowNul: false,
+        references:{model: 'users', key: 'id'}
+    },
     role:{
         type: Sequelize.STRING,
         min:{
@@ -41,6 +46,10 @@ const Job = connection.define('job', {
         allowNull: false
     },
     deleted_at:{
+        type: Sequelize.DATE,
+        allowNull: true
+    },
+    completed_at:{
         type: Sequelize.DATE,
         allowNull: true
     }

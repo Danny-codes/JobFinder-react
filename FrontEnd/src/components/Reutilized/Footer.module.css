@@ -23,9 +23,15 @@
     font-size: 20px;
 }
 
-.brand img{
-    width: 150px;
-}
+.brand .logo{
+        background: url('../../../public/img/logo.png') no-repeat;
+        background-position: left top;
+        background-size:contain;
+        height: 5em;
+        margin-top: 25px;
+        padding-left: 40px;
+      }
+
 
 
 .nav {

@@ -1,18 +1,21 @@
 import { useRef,useContext } from "react";
 import styles from './LoginForm.module.css'
 import AuthContext from "../../store/authContext";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const SignUp = () => {
     const ctx = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const emailRef = useRef();
     const passwordRef = useRef();
     const nameRef = useRef();
 
-    const submitHandler = (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault()
 
-        ctx.api
+        await ctx.api
         .post('/user', {
             email: emailRef.current.value,
             name: nameRef.current.value,
@@ -21,7 +24,11 @@ const SignUp = () => {
         .then((response) => {ctx.settingToken(response.data.token)})
         .catch(err => console.log(err))
 
-        console.log(emailRef)
+        const token = ctx.getToken()
+
+        if(token !== undefined){
+          navigate('/send-job')
+        }
     }
 
   return (

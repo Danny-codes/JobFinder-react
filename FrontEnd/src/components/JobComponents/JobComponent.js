@@ -3,8 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import JobsContext from "../../store/job-slice";
 import HTMLReactParser from 'html-react-parser'
 import { useParams } from "react-router-dom";
+import EmailForm from "../EmailComponents/EmailForm";
 
 const JobComponent =  () => {
+  window.scrollTo(0, 0)
   const ctx = useContext(JobsContext);
   const [job, setJob] = useState({role : '', company: '', contract: '', state: '', description: ''});
 
@@ -16,6 +18,10 @@ const JobComponent =  () => {
     .then((response) => setJob(response.data))
     .catch((error) => console.log(error));
   }, [ctx.api, id.id])
+
+  const applyButtonHandler = () => {
+    ctx.showingModal(true)
+  }
     
   return (
     <main className={styles.main}>
@@ -34,7 +40,8 @@ const JobComponent =  () => {
         <h3>{job.state}</h3>
       {HTMLReactParser(job.description)}
       </div>
-      <button>Apply Now</button>
+      <button onClick={applyButtonHandler}>Candidate-se</button>
+      {ctx.showModal && <EmailForm /> }
     </main>
   );
 };

@@ -10,7 +10,7 @@ const authController = async (req, res) => {
 
     if (authenticated) {
       const token = jwt.sign(
-        { userName: foundUser.name, userEmail: foundUser.email },
+        {recruiterId: foundUser.id, userName: foundUser.name, userEmail: foundUser.email },
         "secret",
         { expiresIn: "30d" }
       );

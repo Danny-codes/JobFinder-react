@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.flex_box}>
         <div className={styles.brand}>
-          <img src="img/logo.png" alt="Character climbing an arrow" />
+          <div className={styles.logo} src="img/logo.png" alt="Character climbing an arrow" />
           <h2>JobFinder</h2>
           <p>A maneira mais fácil de encontrar seu próximo emprego.</p>
         </div>

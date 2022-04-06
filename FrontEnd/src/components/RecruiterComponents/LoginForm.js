@@ -1,22 +1,30 @@
 import { useRef, useContext } from "react";
 import AuthContext from "../../store/authContext";
 import styles from './LoginForm.module.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const LoginForm = () => {
-    const ctx = useContext(AuthContext)
+  const navigate = useNavigate()
+     const ctx = useContext(AuthContext)
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const submitHandler = (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault()
 
-        ctx.api
+        await ctx.api
         .post('/auth', {
             email: emailRef.current.value,
             password: passwordRef.current.value,
         })
-        .then((response) => {ctx.settingToken(response.data.token)})
-        .catch(err => console.log(err))
+        .then((response) => { ctx.settingToken(response.data.token)})
+        .catch(err => console.log(err));
+
+        const token = ctx.getToken()
+
+       if(token !== undefined){
+         navigate('/send-job')
+       }
 
     }
 

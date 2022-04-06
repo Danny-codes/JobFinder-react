@@ -1,5 +1,6 @@
 import styles from "./Form.module.css";
 import { useRef, useContext, useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
 import JobsContext from "../../store/job-slice";
 import SuccessModel from "./SuccessModel";
 import { Editor } from "@tinymce/tinymce-react";
@@ -16,11 +17,18 @@ const Form = () => {
   const statetRef = useRef();
   const categoryRef = useRef();
 
+  const jwtToken = AuthCtx.getToken()
+
+  var decoded = jwt_decode(jwtToken);
+
+  console.log(decoded.recruiterId)
+
   const sendJobHandler = (e) => {
     e.preventDefault();
 
     AuthCtx.api
       .post("/jobs", {
+        recruiter: decoded.recruiterId,
         role: roleRef.current.value.toLowerCase(),
         description: descriptionRef.current.getContent(),
         company: companyRef.current.value.toLowerCase(),

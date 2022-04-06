@@ -30,7 +30,7 @@ userServices.createUser = async (req, res) => {
       password: hash,
     });
 
-    const token = jwt.sign({ userName: newUser.name, userEmail: newUser.email}, 'secret', {expiresIn: '30d'})
+    const token = jwt.sign({recruiterId: newUser.id, userName: newUser.name, userEmail: newUser.email}, 'secret', {expiresIn: '30d'})
 
     return res.json({token: token});
   } catch (error) {

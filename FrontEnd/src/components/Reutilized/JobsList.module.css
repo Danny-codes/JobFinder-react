@@ -41,7 +41,7 @@
 .name h3 {
     text-align: left;
     color: rgb(172, 170, 170);
-    font-size: 20px;
+    font-size: 15px;
     line-height: 5px;
     text-transform: uppercase;
 }
@@ -61,7 +61,7 @@
 }
 
 .type{
-    background-color: red;
+    background-color: rgb(0, 255, 106);
     color: white;
     width: 15em;
     height: 1.8em;
